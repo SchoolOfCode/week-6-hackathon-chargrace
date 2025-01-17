@@ -1,12 +1,7 @@
-import { test, expect, describe } from "vitest"; 
+import { test, expect } from "vitest"; 
 
 import { compareUserInputWithAnswer } from "./main.js";
 
-//mvp 1 test plan
-//Displays instructions and words
-//Takes in user input
-// Compares with connection word
-// Returns a correct/false answer
 
 test("incorrect user input compared with connection word", () => {
     //assign
@@ -30,11 +25,7 @@ test("Correct User input compared with connections answer", () => {
     expect(actual).toBe(expected);
 })
 
-//mvp 2 test plan
-// Displays instructions and words
-// Takes in user input that can be lower or upper case
-// Compares with connection word that can be lower or upper case
-// Returns a correct/false answer 
+//mvp 2 test 
 
 test("Correct User input compared with connections answer- case insensitive", () => {
     //assign
@@ -92,3 +83,15 @@ test("correct user input can have white space either side and answer is still co
     //assert
     expect(actual).toBe(expected);
 })
+
+//mvp 5- input type
+
+test("test for user input type to be a string, if not give an error message", () => {
+    //assign
+    const nonStringInput = 123;
+    const expected = new Error("Please enter a string");
+    //act
+    const actual = compareUserInputWithAnswer(nonStringInput);
+    //assert
+    expect(actual).toStrictEqual(expected);
+}) 
