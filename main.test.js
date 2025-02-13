@@ -5,7 +5,6 @@ import { compareUserInputWithAnswer } from "./main.js";
 
 test("incorrect user input compared with connection word", () => {
     //assign
-   // const connectionAnswer= "Crescents";
     const userInput = "Circular"
     const expected = `Sorry, your guess was not correct`;
     //act

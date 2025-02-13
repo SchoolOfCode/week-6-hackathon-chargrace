@@ -28,5 +28,19 @@ console.log("Please enter the connection between these words");
 
 export function compareUserInputWithAnswer (userInput) {
     const connectionAnswer= "Crescents";
+    if ((typeof userInput) !== "string") {
+        return new Error ("Please enter a string");
+    }
+    const connectionAnswerCaseInsensitive= connectionAnswer.toLowerCase();
+    const userInputCaseInsensitive = userInput.toLowerCase().trim();
+    
 
+    if (connectionAnswerCaseInsensitive === userInputCaseInsensitive) {
+        return `Correct, the answer is ${connectionAnswer}`
+    } 
+    
+    if (connectionAnswerCaseInsensitive !== userInputCaseInsensitive) {
+        return `Sorry, your guess was not correct`;
+        
+    }
 }
