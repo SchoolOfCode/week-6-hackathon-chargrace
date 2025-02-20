@@ -1,4 +1,4 @@
-//back up for function for demo 
+
 
  const connectionAnswer= "Crescents";
     if ((typeof userInput) !== "string") {
