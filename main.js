@@ -1,4 +1,3 @@
-
 /** Task 2: Connections Conundrum.
  * 
  * The Oracle reveals 4 mysterious words and challenges you to guess the link between them all. The connections between the words might be subtle, 
@@ -20,27 +19,34 @@ Your task is to write a function that identifies the correct grouping and ensure
  * 
  * Reminder: don't forget to 'npm install' before starting and using 'npm run test' to check your solution.
  */
-   
 
 console.log("Welcome to Connections!");
 console.log("Your list of words today is: MOON, BOW, SMILE, CROISSANT");
 console.log("Please enter the connection between these words");
 
-export function compareUserInputWithAnswer (userInput) {
-    const connectionAnswer= "Crescents";
-    if ((typeof userInput) !== "string") {
-        return new Error ("Please enter a string");
-    }
-    const connectionAnswerCaseInsensitive= connectionAnswer.toLowerCase();
-    const userInputCaseInsensitive = userInput.toLowerCase().trim();
-    
+export function compareUserInputWithAnswer(userInput) {
+  const hintThreshold = 3; // Number of incorrect guesses before providing a hint
+  let guessCount = 0;
+  const connectionAnswer = "Crescents";
 
-    if (connectionAnswerCaseInsensitive === userInputCaseInsensitive) {
-        return `Correct, the answer is ${connectionAnswer}`
-    } 
-    
-    if (connectionAnswerCaseInsensitive !== userInputCaseInsensitive) {
-        return `Sorry, your guess was not correct`;
-        
-    }
+  guessCount += 1;
+  console.log(guessCount);
+
+  if (typeof userInput !== "string") {
+    return new Error("Please enter a string");
+  }
+  const connectionAnswerCaseInsensitive = connectionAnswer.toLowerCase();
+  const userInputCaseInsensitive = userInput.toLowerCase().trim();
+
+  if (connectionAnswerCaseInsensitive === userInputCaseInsensitive) {
+    return `Correct, the answer is ${connectionAnswer}`;
+  }
+
+  if (connectionAnswerCaseInsensitive !== userInputCaseInsensitive) {
+    return `Sorry, your guess was not correct`;
+  }
+
+  if (hintThreshold > guessCount) {
+    return "Here is a hint: A _ _ _ _ _ _ _ _ moon";
+  }
 }
